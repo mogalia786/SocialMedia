@@ -59,14 +59,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.86904633620689653" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ez0-Xv-LIB">
-                                <color key="backgroundColor" red="0.19215686274509805" green="0.24705882352941178" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="103" id="2Cd-s7-isl"/>
-                                    <constraint firstAttribute="height" constant="107" id="yEL-DY-edR"/>
-                                </constraints>
-                                <state key="normal" backgroundImage="f"/>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="mrY-Xc-fK1">
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="w2E-2n-qfv">
@@ -88,7 +80,8 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ck8-Wa-qtR">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ck8-Wa-qtR">
+                                <frame key="frameInset" minX="4" minY="356" width="355" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="6BF-3b-BzQ"/>
                                     <constraint firstAttribute="width" constant="355" id="ADg-ip-dZo"/>
@@ -98,23 +91,27 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.86904633620000005" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyh-ZW-oMO">
+                                <frame key="frameInset" minX="158" minY="237" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Ms-9N-3MM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ck8-Wa-qtR" secondAttribute="trailing" constant="4" id="4LT-gJ-NC6"/>
                             <constraint firstItem="LuD-UV-uI5" firstAttribute="top" secondItem="lo4-6u-QzK" secondAttribute="bottom" constant="8" id="ANy-Yq-9AX"/>
-                            <constraint firstItem="Ez0-Xv-LIB" firstAttribute="top" secondItem="LuD-UV-uI5" secondAttribute="bottom" constant="25" id="Avp-d4-wvf"/>
                             <constraint firstItem="mrY-Xc-fK1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BX3-E9-VLN"/>
                             <constraint firstItem="lo4-6u-QzK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CSx-UR-vHo"/>
-                            <constraint firstItem="Ez0-Xv-LIB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Elh-jw-cYL"/>
                             <constraint firstAttribute="trailing" secondItem="s5r-2h-vWA" secondAttribute="trailing" id="FqI-4A-5JJ"/>
-                            <constraint firstItem="ck8-Wa-qtR" firstAttribute="top" secondItem="Ez0-Xv-LIB" secondAttribute="bottom" constant="45" id="Mwi-eO-zQV"/>
                             <constraint firstItem="s5r-2h-vWA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NyS-ZM-VZc"/>
                             <constraint firstAttribute="trailing" secondItem="lo4-6u-QzK" secondAttribute="trailing" id="Q0h-vl-RNX"/>
                             <constraint firstAttribute="trailing" secondItem="LuD-UV-uI5" secondAttribute="trailing" constant="10" id="QbX-jg-h7s"/>
                             <constraint firstAttribute="trailing" secondItem="mrY-Xc-fK1" secondAttribute="trailing" constant="10" id="UUm-We-FBa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="s5r-2h-vWA" secondAttribute="bottom" id="YMj-bu-yOD"/>
-                            <constraint firstItem="Ez0-Xv-LIB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZsJ-HC-t3A"/>
                             <constraint firstItem="s5r-2h-vWA" firstAttribute="top" secondItem="mrY-Xc-fK1" secondAttribute="bottom" constant="20" id="Zy7-29-SNQ"/>
                             <constraint firstItem="ck8-Wa-qtR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="4" id="aKJ-A8-8lv"/>
                             <constraint firstItem="mrY-Xc-fK1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="kaU-L4-Oh6"/>
@@ -130,6 +127,5 @@
     </scenes>
     <resources>
         <image name="devslopes-logo" width="150" height="94"/>
-        <image name="f" width="352" height="328"/>
     </resources>
 </document>
