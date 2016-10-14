@@ -13,6 +13,8 @@ import Firebase
 
 class LoginVC: UIViewController {
 
+    @IBOutlet weak var Password: UITextField!
+    @IBOutlet weak var Email: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -63,13 +65,37 @@ class LoginVC: UIViewController {
             }
             else
             {
-                print("FAIZEL :user cancelled authentication in FIREBASE")
+                print("FAIZEL :Successfully Authenticated with FIREBASE")
                 
             }
             
             
             
         })
+        
+    }
+    
+    @IBAction func emailTapped(_ sender: AnyObject) {
+        if let email=Email.text, let pwd=Password.text{
+            FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
+                if error==nil{
+                    print("FAIZEL: Email User asuthenticated with FIREBASE")
+                }else{
+                    FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
+                        if error != nil{
+                            print("FAIZEL: unable to authenticate with FIREBASE using email \(error)")
+                        }else{
+                            print("FAIZEL: Successfully authenticated with FIREBASE")
+                        }
+                    })
+                }
+            })
+            
+            
+            
+        }
+        
+        
         
     }
 }

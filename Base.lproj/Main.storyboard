@@ -77,24 +77,19 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="emailTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2r2-DW-l32"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="OR" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ck8-Wa-qtR">
-                                <frame key="frameInset" minX="4" minY="356" width="355" height="21"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyh-ZW-oMO">
+                                <color key="backgroundColor" red="0.2470588235" green="0.31372549020000001" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="21" id="6BF-3b-BzQ"/>
-                                    <constraint firstAttribute="width" constant="355" id="ADg-ip-dZo"/>
-                                    <constraint firstAttribute="height" constant="21" id="mbN-bI-8Po"/>
+                                    <constraint firstAttribute="height" constant="105" id="3UQ-9A-S89"/>
+                                    <constraint firstAttribute="width" constant="153" id="Icg-uO-4Xd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.86904633620000005" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lyh-ZW-oMO">
-                                <frame key="frameInset" minX="158" minY="237" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button" image="f"/>
                                 <connections>
                                     <action selector="btn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6Ms-9N-3MM"/>
                                 </connections>
@@ -102,10 +97,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ck8-Wa-qtR" secondAttribute="trailing" constant="4" id="4LT-gJ-NC6"/>
                             <constraint firstItem="LuD-UV-uI5" firstAttribute="top" secondItem="lo4-6u-QzK" secondAttribute="bottom" constant="8" id="ANy-Yq-9AX"/>
                             <constraint firstItem="mrY-Xc-fK1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BX3-E9-VLN"/>
                             <constraint firstItem="lo4-6u-QzK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CSx-UR-vHo"/>
+                            <constraint firstItem="lyh-ZW-oMO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DrV-t4-F9m"/>
                             <constraint firstAttribute="trailing" secondItem="s5r-2h-vWA" secondAttribute="trailing" id="FqI-4A-5JJ"/>
                             <constraint firstItem="s5r-2h-vWA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NyS-ZM-VZc"/>
                             <constraint firstAttribute="trailing" secondItem="lo4-6u-QzK" secondAttribute="trailing" id="Q0h-vl-RNX"/>
@@ -113,12 +108,16 @@
                             <constraint firstAttribute="trailing" secondItem="mrY-Xc-fK1" secondAttribute="trailing" constant="10" id="UUm-We-FBa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="s5r-2h-vWA" secondAttribute="bottom" id="YMj-bu-yOD"/>
                             <constraint firstItem="s5r-2h-vWA" firstAttribute="top" secondItem="mrY-Xc-fK1" secondAttribute="bottom" constant="20" id="Zy7-29-SNQ"/>
-                            <constraint firstItem="ck8-Wa-qtR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="4" id="aKJ-A8-8lv"/>
                             <constraint firstItem="mrY-Xc-fK1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="kaU-L4-Oh6"/>
+                            <constraint firstItem="lyh-ZW-oMO" firstAttribute="top" secondItem="LuD-UV-uI5" secondAttribute="bottom" constant="20" id="m6Z-Gi-e1P"/>
                             <constraint firstItem="LuD-UV-uI5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="oKg-BI-KRv"/>
                             <constraint firstItem="lo4-6u-QzK" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wSC-Yf-Ao9"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="Email" destination="w2E-2n-qfv" id="SFb-3H-Oze"/>
+                        <outlet property="Password" destination="4Kh-bz-uVL" id="AMm-R0-tI5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -127,5 +126,6 @@
     </scenes>
     <resources>
         <image name="devslopes-logo" width="150" height="94"/>
+        <image name="f" width="352" height="328"/>
     </resources>
 </document>
