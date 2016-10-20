@@ -73,9 +73,11 @@ class LoginVC: UIViewController {
             else
             {
                 print("FAIZEL :Successfully Authenticated with FIREBASE")
-                
-                self.completeSignIn(id: (user?.uid)!)
-
+                if let user=user{
+                let userData=["Provider": credential.provider]
+                self.completeSignIn(id: user.uid, userData: userData)
+                }
+            
             }
             
             
@@ -89,16 +91,23 @@ class LoginVC: UIViewController {
             FIRAuth.auth()?.signIn(withEmail: email, password: pwd, completion: { (user, error) in
                 if error==nil{
                     print("FAIZEL: Email User asuthenticated with FIREBASE")
-                    self.completeSignIn(id: (user?.uid)!)
+                    if let user=user{
+                        let userData=["Provider": user.providerID]
+                        self.completeSignIn(id: user.uid, userData: userData)
+                    }
 
                 }else{
                     FIRAuth.auth()?.createUser(withEmail: email, password: pwd, completion: { (user, error) in
                         if error != nil{
                             print("FAIZEL: unable to authenticate with FIREBASE using email \(error)")
                         }else{
-                            self.completeSignIn(id: (user?.uid)!)
+                            
+                            if let user=user{
+                                let userData=["Provider": user.providerID]
+                                self.completeSignIn(id: user.uid, userData: userData)
+                            }
                             print("FAIZEL: Successfully authenticated with FIREBASE")
-                            self.completeSignIn(id: (user?.uid)!)
+                            
 
                         }
                     })
@@ -112,8 +121,10 @@ class LoginVC: UIViewController {
         
         
     }
-    func completeSignIn(id: String)
+    func completeSignIn(id: String, userData : Dictionary<String, String>)
     {
+        
+    databaseServices.ds.createFirebaseUsers(uid: id, userData: userData)
     KeychainWrapper.standard.set(id, forKey: KEY_UID)
     performSegue(withIdentifier: "gotoFeed", sender: nil)
         
