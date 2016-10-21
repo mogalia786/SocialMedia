@@ -17,6 +17,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var imageAdd: RoundedImage!
     var posts=[Post]()
     var imagePicker:UIImagePickerController!
+    var imageSelected=false
     static var imageCache: NSCache<NSString, UIImage>= NSCache()
     
     override func viewDidLoad() {
@@ -85,16 +86,27 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
         
            }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image=info[UIImagePickerControllerEditedImage] as? UIImage{
+            imageAdd.image=image
+            imageSelected=true
+        }else{
+            print("FAIZEL A vaid image wasnt selected")
+        }
+        imagePicker.dismiss(animated: true, completion: nil)
+        
+    }
   
     @IBAction func postBtnTapped(_ sender: AnyObject) {
         guard let caption=captionField.text, caption != "" else {
             print("FAIZEL: Please enter a caption")
-        return
+            return
         }
         
-        guard let img=imageAdd.image else{
+        guard let img=imageAdd.image, imageSelected==true else{
         
-        print ("FAIZEL: No image selected")
+            print ("FAIZEL: No image selected")
             return
         }
     
@@ -122,15 +134,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         }
     
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        if let image=info[UIImagePickerControllerEditedImage] as? UIImage{
-            imageAdd.image=image
-        }else{
-            print("FAIZEL A vaid image wasnt selected")
-        }
-        imagePicker.dismiss(animated: true, completion: nil)
-
-    }
+  
     
     }
     @IBAction func btnLogOut(_ sender: AnyObject) {
