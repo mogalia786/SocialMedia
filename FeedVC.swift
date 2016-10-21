@@ -127,16 +127,35 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
                     print("FAIZEL: Successfully transferred toFirevase Storage")
                     
                     let downloadURL=metadata?.downloadURL()?.absoluteString
-                    
+                    if let url=downloadURL {
+                        self.postToFirebase(imgURL: url)
+                    }
                 }
             }
             
         }
+    }
     
-    
+    func postToFirebase(imgURL: String){
+        
+            let post: Dictionary <String, Any> = [
+            
+            "Caption": captionField.text!,
+            "Image": imgURL,
+            "Likes": 0
+                ]
+        
+            let firebasePost=databaseServices.ds.REF_POSTS.childByAutoId()
+            firebasePost.setValue(post)
+            
+            captionField.text=""
+            imageSelected=false
+            imageAdd.image=UIImage(named: "add-image")
+            
+        }
   
     
-    }
+   
     @IBAction func btnLogOut(_ sender: AnyObject) {
         KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         try! FIRAuth.auth()?.signOut()
