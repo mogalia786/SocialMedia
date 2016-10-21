@@ -16,8 +16,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     @IBOutlet weak var imageAdd: RoundedImage!
     var posts=[Post]()
     var imagePicker:UIImagePickerController!
+    static var imageCache: NSCache<NSString, UIImage>= NSCache()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         databaseServices.ds.REF_POSTS.observe(.value, with: {(snapshot) in
             if let snapshot=snapshot.children.allObjects as? [FIRDataSnapshot]{
                 for snap in snapshot {
@@ -62,8 +65,18 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         let post=posts[indexPath.row]
         if let cell=tableView.dequeueReusableCell(withIdentifier: "postCell") as? postCell
         {
-            cell.configureCell(post: post)
+            if let img=FeedVC.imageCache.object(forKey: post.ImageURL as NSString){
+                cell.configureCell(post: post, img: img)
+                return cell
+            }else{
+                
+                 cell.configureCell(post: post)
             return cell
+
+            }
+            
+            
+                       
             
         }else{
             
