@@ -13,6 +13,7 @@ import Firebase
 class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var captionField: UITextField!
     @IBOutlet weak var imageAdd: RoundedImage!
     var posts=[Post]()
     var imagePicker:UIImagePickerController!
@@ -76,7 +77,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
             }
             
             
-                       
+            
             
         }else{
             
@@ -85,6 +86,42 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         
            }
   
+    @IBAction func postBtnTapped(_ sender: AnyObject) {
+        guard let caption=captionField.text, caption != "" else {
+            print("FAIZEL: Please enter a caption")
+        return
+        }
+        
+        guard let img=imageAdd.image else{
+        
+        print ("FAIZEL: No image selected")
+            return
+        }
+    
+        if let imgData=UIImageJPEGRepresentation(img, 0.2){
+            
+            let imgUUID=NSUUID().uuidString
+            let metadata=FIRStorageMetadata()
+            metadata.contentType="image/jpg"
+            
+            databaseServices.ds.REF_POST_IMAGES.child(imgUUID).put(imgData, metadata: metadata){(metadata,error) in
+                if error != nil {
+                    
+                    print("FAIZEL: Unable to upload image to Firebase Storage")
+                    return
+                    
+                }else{
+                    
+                    print("FAIZEL: Successfully transferred toFirevase Storage")
+                    
+                    let downloadURL=metadata?.downloadURL()?.absoluteString
+                    
+                }
+            }
+            
+        }
+    
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image=info[UIImagePickerControllerEditedImage] as? UIImage{
             imageAdd.image=image
@@ -95,7 +132,7 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
 
     }
     
-    
+    }
     @IBAction func btnLogOut(_ sender: AnyObject) {
         KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         try! FIRAuth.auth()?.signOut()
