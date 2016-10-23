@@ -15,19 +15,28 @@ class postCell: UITableViewCell {
     @IBOutlet weak var postImg: UIImageView!
     @IBOutlet weak var caption: UITextView!
     @IBOutlet weak var likeLbl: UILabel!
+    @IBOutlet  weak var likeImg: UIImageView!
+    
     
     var post:Post!
-    
+    var likeRef:FIRDatabaseReference!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let tap=UITapGestureRecognizer (target: self, action: #selector(likeTapped))
+        tap.numberOfTapsRequired=1
+        likeImg.addGestureRecognizer(tap)
+        likeImg.isUserInteractionEnabled=true
+        
     }
 
     func configureCell(post: Post, img: UIImage?=nil)
     {
         self.post=post
-        self.caption.text=post.Caption
+
+        likeRef=databaseServices.ds.REF_USER_CURENT.child("Likes").child(post.PostKey)
+                self.caption.text=post.Caption
         self.likeLbl.text="\(post.Likes)"
         
         if img != nil{
@@ -49,6 +58,7 @@ class postCell: UITableViewCell {
                             FeedVC.imageCache.setObject(img, forKey: post.ImageURL as NSString)
                             
                             
+                            
                         }
                         
                     }
@@ -59,6 +69,34 @@ class postCell: UITableViewCell {
             
             
         }
+        
+        
+        likeRef.observeSingleEvent(of: .value, with: {(snapshot) in
+            
+            if let _ = snapshot.value as? NSNull {
+                self.likeImg.image=UIImage(named: "empty-heart")
+            }else{
+                self.likeImg.image=UIImage(named: "filled-heart")
+                
+            }
+        })
+        
+    }
+    func likeTapped(sender: UITapGestureRecognizer){
+        
+        likeRef.observeSingleEvent(of: .value, with: {(snapshot) in
+            
+            if let _ = snapshot.value as? NSNull {
+                self.likeImg.image=UIImage(named: "filled-heart")
+                self.post.adjustLikes(addLike: true)
+                self.likeRef.setValue(true)
+            }else{
+                self.likeImg.image=UIImage(named: "empty-heart")
+                self.post.adjustLikes(addLike: false)
+                self.likeRef.removeValue()
+            }
+        })
+  
         
     }
   

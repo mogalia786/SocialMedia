@@ -20,7 +20,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lo4-6u-QzK">
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="devslopes-logo" translatesAutoresizingMaskIntoConstraints="NO" id="ohL-8u-yPF"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="istrobe-logo" translatesAutoresizingMaskIntoConstraints="NO" id="ohL-8u-yPF"/>
                                 </subviews>
                                 <color key="backgroundColor" red="0.24705882352941178" green="0.31764705882352939" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -99,6 +99,7 @@
                             <constraint firstItem="LuD-UV-uI5" firstAttribute="top" secondItem="lo4-6u-QzK" secondAttribute="bottom" constant="8" id="ANy-Yq-9AX"/>
                             <constraint firstItem="mrY-Xc-fK1" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BX3-E9-VLN"/>
                             <constraint firstItem="lo4-6u-QzK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CSx-UR-vHo"/>
+                            <constraint firstItem="LuD-UV-uI5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Cru-Un-xTU"/>
                             <constraint firstItem="lyh-ZW-oMO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="DrV-t4-F9m"/>
                             <constraint firstAttribute="trailing" secondItem="s5r-2h-vWA" secondAttribute="trailing" id="FqI-4A-5JJ"/>
                             <constraint firstItem="s5r-2h-vWA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="NyS-ZM-VZc"/>
@@ -107,6 +108,7 @@
                             <constraint firstAttribute="trailing" secondItem="mrY-Xc-fK1" secondAttribute="trailing" constant="10" id="UUm-We-FBa"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="s5r-2h-vWA" secondAttribute="bottom" id="YMj-bu-yOD"/>
                             <constraint firstItem="s5r-2h-vWA" firstAttribute="top" secondItem="mrY-Xc-fK1" secondAttribute="bottom" constant="20" id="Zy7-29-SNQ"/>
+                            <constraint firstItem="LuD-UV-uI5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="a7M-8I-uZZ"/>
                             <constraint firstItem="mrY-Xc-fK1" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="kaU-L4-Oh6"/>
                             <constraint firstItem="lyh-ZW-oMO" firstAttribute="top" secondItem="LuD-UV-uI5" secondAttribute="bottom" constant="20" id="m6Z-Gi-e1P"/>
                             <constraint firstItem="LuD-UV-uI5" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="10" id="oKg-BI-KRv"/>
@@ -291,6 +293,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="caption" destination="hPh-4e-EdW" id="NjT-pf-ty7"/>
+                                            <outlet property="likeImg" destination="3N0-Jw-XQ5" id="Mma-3W-RrR"/>
                                             <outlet property="likeLbl" destination="Xxi-3f-7OU" id="AE9-Vf-up3"/>
                                             <outlet property="postImg" destination="AD1-GZ-C7p" id="8DA-Ia-EoR"/>
                                             <outlet property="profileImg" destination="DmY-ka-ZbO" id="EQr-UX-4KK"/>
@@ -329,15 +332,15 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1180" y="54"/>
+            <point key="canvasLocation" x="906" y="21"/>
         </scene>
     </scenes>
     <resources>
         <image name="add-image" width="88" height="88"/>
         <image name="add-post" width="88" height="88"/>
-        <image name="devslopes-logo" width="150" height="94"/>
         <image name="empty-heart" width="70" height="70"/>
         <image name="f" width="352" height="328"/>
+        <image name="istrobe-logo" width="1388" height="213"/>
         <image name="placeholder" width="567" height="312"/>
         <image name="profile" width="113" height="155"/>
         <image name="sign-out" width="92" height="65"/>
