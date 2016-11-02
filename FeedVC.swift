@@ -24,6 +24,8 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
         super.viewDidLoad()
         
         databaseServices.ds.REF_POSTS.observe(.value, with: {(snapshot) in
+            self.posts = []
+            
             if let snapshot=snapshot.children.allObjects as? [FIRDataSnapshot]{
                 for snap in snapshot {
                     print ("snap \(snap)")
@@ -138,11 +140,11 @@ class FeedVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIIm
     
     func postToFirebase(imgURL: String){
         
-            let post: Dictionary <String, Any> = [
+            let post: Dictionary <String, AnyObject> = [
             
-            "Caption": captionField.text!,
-            "Image": imgURL,
-            "Likes": 0
+                "Caption": captionField.text! as AnyObject,
+            "Image": imgURL as AnyObject,
+            "Likes": 0 as AnyObject
                 ]
         
             let firebasePost=databaseServices.ds.REF_POSTS.childByAutoId()
